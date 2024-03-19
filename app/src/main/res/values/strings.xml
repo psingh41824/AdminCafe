@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AdminCafe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_improper_response_server">msg_improper_response_server</string>
+    <string name="internet_connection">internet_connection</string>
+</resources>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".fragment.HomeFragment"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_Slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Slider"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_Slider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_insert_photo_24"
+                    android:layout_marginStart="20dp"
+                    android:layout_below="@id/txt_Slider"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_offer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Offer"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/img_Slider"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_offerDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type OfferDate"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/edt_offer"/>
+
+                <Button
+                    android:id="@+id/btnBannerUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:text="Upload"
+                    android:layout_below="@+id/edt_offerDate"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_Category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Add Category"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_Category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_insert_photo_24"
+                    android:layout_marginStart="20dp"
+                    android:layout_below="@id/txt_Category"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtTxt_CategoryName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_Category"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Category Name"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey" />
+
+                <Button
+                    android:id="@+id/btnCategoryUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/edtTxt_CategoryName"
+                    android:layout_margin="10dp"
+                    android:text="Upload" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_Product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Add Product"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txt_productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Product Name"
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/txt_Product"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txt_productDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Description "
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/txt_productName"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_Product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_insert_photo_24"
+                    android:layout_marginStart="20dp"
+                    android:layout_below="@id/txt_productDescription"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txt_productPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_Product"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Price "
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txt_productSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Size "
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/txt_productPrice"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txt_productCategoryId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Category Id "
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/txt_productPrice"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txt_productRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Product Rating "
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/txt_productCategoryId"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txt_productReviews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/grey"
+                    android:hint="Type Product Reviews "
+                    android:padding="10dp"
+                    android:textColor="@color/dark_grey"
+                    android:layout_below="@id/txt_productRating"/>
+
+                <Button
+                    android:id="@+id/btnProductUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/txt_productReviews"
+                    android:layout_margin="10dp"
+                    android:text="Upload" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
