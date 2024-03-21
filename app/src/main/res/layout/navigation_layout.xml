@@ -85,13 +85,32 @@
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="20dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/txt_home"
-                android:layout_marginTop="10dp"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/arrow_down" />
+
+            <RelativeLayout
+                android:id="@+id/rl_home_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_home">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

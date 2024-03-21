@@ -1,0 +1,7 @@
+<!-- res/drawable/custom_activated_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the state for an activated/selected item -->
+    <item android:state_activated="true" android:drawable="@color/grey" />
+    <!-- Default state (unactivated/unselected item) -->
+    <item android:drawable="@android:color/transparent" />
+</selector>

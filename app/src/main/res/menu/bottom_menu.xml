@@ -4,11 +4,15 @@
         <item
             android:id="@+id/Bot_home"
             android:icon="@drawable/home_bot"
-            android:title="Home"/>
+            android:title="Banner"/>
         <item
             android:id="@+id/Bot_category"
             android:icon="@drawable/category_bot"
-            android:title="Categories"/>
+            android:title="Category"/>
+        <item
+            android:id="@+id/Bot_Product"
+            android:title="Product"
+            android:icon="@drawable/baseline_production_quantity_limits_24" />
 
         <item
             android:id="@+id/Bot_profile"

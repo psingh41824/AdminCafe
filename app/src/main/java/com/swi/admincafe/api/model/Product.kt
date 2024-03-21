@@ -1,12 +1,7 @@
 package com.swi.admincafe.api.model
 
-import com.swi.admincafe.api.model.Category
-
 data class Product(
-    val __v: Int,
-    val _id: String,
     val category: Category,
-    val dateCreated: String,
     val description: String,
     val image: String,
     val name: String,

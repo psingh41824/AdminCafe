@@ -69,10 +69,11 @@ class LoginViewModel(
         }
     }
 
-    fun productData() = viewModelScope.launch(Dispatchers.IO) {
+    fun insertProduct(category : RequestBody, description : RequestBody, image: MultipartBody.Part, name : RequestBody,
+                      numReviews : RequestBody, price : RequestBody, rating : RequestBody, size: RequestBody) = viewModelScope.launch(Dispatchers.IO) {
         if (NetworkUtils.isInternetAvailable(getApplication<Application>())) {
             _productLiveData.postValue(Response.Loading())
-            val result = repository.getProduct()
+            val result = repository.insertProduct(category,description,image,name,numReviews,price,rating,size)
             if (result.body() != null) {
                 _productLiveData.postValue(Response.Success(result.body()))
             } else {

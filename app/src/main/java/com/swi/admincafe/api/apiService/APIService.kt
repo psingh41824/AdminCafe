@@ -31,7 +31,17 @@ interface APIService {
                              @Part("offer") offer : RequestBody,
                              @Part("offerDate") offerDate : RequestBody): Response<BannerResponseModel>
 
-    @GET("/api/product")
-    suspend fun getProduct(): Response<ProductResponseModel>
+    @Multipart
+    @POST("/api/product")
+    suspend fun insertProduct(@Part("category") category : RequestBody,
+                           @Part("description") description : RequestBody,
+                           @Part image: MultipartBody.Part,
+                           @Part("name") name : RequestBody,
+                           @Part("numReviews") numReviews : RequestBody,
+                           @Part("price") price : RequestBody,
+                           @Part("rating") rating : RequestBody,
+                           @Part("size") size: RequestBody): Response<ProductResponseModel>
+
+
 
 }
