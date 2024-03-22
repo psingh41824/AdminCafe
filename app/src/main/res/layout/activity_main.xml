@@ -75,7 +75,7 @@
         </RelativeLayout>
 
         <include
-            android:id="@+id/navigtionLayout"
+            android:id="@+id/navigationLayout"
             layout="@layout/navigation_layout"
             android:layout_gravity="start"
             android:layout_width="250dp"

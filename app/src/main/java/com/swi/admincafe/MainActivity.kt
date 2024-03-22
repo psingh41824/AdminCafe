@@ -1,12 +1,9 @@
 package com.swi.admincafe
 
-import android.content.DialogInterface
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -18,14 +15,16 @@ import com.swi.admincafe.databinding.ActivityMainBinding
 import com.swi.admincafe.databinding.NavigationLayoutBinding
 import com.swi.admincafe.fragment.HomeFragment
 import com.swi.admincafe.fragment.ProfileFragment
+import com.swi.admincafe.iterface.BannerActionListener
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionListener {
 
     private  lateinit var mBinding: ActivityMainBinding
     private lateinit var toolbar: Toolbar
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navigationLayout : NavigationLayoutBinding
+    val  args = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,25 +38,76 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
-        navigationLayout = mBinding.navigtionLayout
+        navigationLayout = mBinding.navigationLayout
         bottomNavigationView = mBinding.bottomNavigation
         mBinding.bottomNavigation.selectedItemId = R.id.Bot_home
 
         initBottom()
         initNavigation()
 
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.fragment_container, HomeFragment())
-        transaction.commit()
+
+        addFragment(HomeFragment(), false, args)
 
     }
 
     private fun initNavigation() {
-        mBinding.navigtionLayout.rlHome.setOnClickListener(this)
-        mBinding.navigtionLayout.rlOrder.setOnClickListener(this)
-        mBinding.navigtionLayout.rlMyCart.setOnClickListener(this)
-        mBinding.navigtionLayout.rlProfile.setOnClickListener(this)
-        mBinding.navigtionLayout.rlLogout.setOnClickListener(this)
+        mBinding.navigationLayout.rlBanner.setOnClickListener(this)
+        mBinding.navigationLayout.rlCategory.setOnClickListener(this)
+        mBinding.navigationLayout.rlProduct.setOnClickListener(this)
+        mBinding.navigationLayout.rlUser.setOnClickListener(this)
+        mBinding.navigationLayout.rlLogout.setOnClickListener(this)
+        mBinding.navigationLayout.bannerAddBtn.setOnClickListener (this)
+        mBinding.navigationLayout.bannerGetBtn.setOnClickListener (this)
+
+        mBinding.navigationLayout.bannerArrowDown.setOnClickListener {
+
+            if (mBinding.navigationLayout.rl1Banner.visibility == View.VISIBLE) {
+
+                mBinding.navigationLayout.rl1Banner.visibility = View.GONE
+                mBinding.navigationLayout.bannerArrowDown.setImageResource(R.drawable.arrow_down)
+            } else {
+
+                mBinding.navigationLayout.rl1Banner.visibility = View.VISIBLE
+                mBinding.navigationLayout.bannerArrowDown.setImageResource(R.drawable.upper_arrow)
+            }
+        }
+        mBinding.navigationLayout.categoryArrowDown.setOnClickListener {
+
+            if (mBinding.navigationLayout.rl1Category.visibility == View.VISIBLE) {
+
+                mBinding.navigationLayout.rl1Category.visibility = View.GONE
+                mBinding.navigationLayout.categoryArrowDown.setImageResource(R.drawable.arrow_down)
+            } else {
+
+                mBinding.navigationLayout.rl1Category.visibility = View.VISIBLE
+                mBinding.navigationLayout.categoryArrowDown.setImageResource(R.drawable.upper_arrow)
+            }
+        }
+        mBinding.navigationLayout.productArrowDown.setOnClickListener {
+
+            if (mBinding.navigationLayout.rl1Product.visibility == View.VISIBLE) {
+
+                mBinding.navigationLayout.rl1Product.visibility = View.GONE
+                mBinding.navigationLayout.productArrowDown.setImageResource(R.drawable.arrow_down)
+            } else {
+
+                mBinding.navigationLayout.rl1Product.visibility = View.VISIBLE
+                mBinding.navigationLayout.productArrowDown.setImageResource(R.drawable.upper_arrow)
+            }
+        }
+        mBinding.navigationLayout.userArrowDown.setOnClickListener {
+
+            if (mBinding.navigationLayout.rl1User.visibility == View.VISIBLE) {
+
+                mBinding.navigationLayout.rl1User.visibility = View.GONE
+                mBinding.navigationLayout.userArrowDown.setImageResource(R.drawable.arrow_down)
+            } else {
+
+                mBinding.navigationLayout.rl1User.visibility = View.VISIBLE
+                mBinding.navigationLayout.userArrowDown.setImageResource(R.drawable.upper_arrow)
+            }
+        }
+
     }
 
     private fun initBottom() {
@@ -67,13 +117,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.Bot_home -> {
 
                     toolbar.title = "Home"
-                    replaceFragment(HomeFragment())
+                    addFragment(HomeFragment(),true,args)
                     true
                 }
 
                 R.id.Bot_profile -> {
 
-                    replaceFragment(ProfileFragment())
+                    addFragment(ProfileFragment(),true,args)
                     true
                 }
                 else -> {
@@ -96,54 +146,60 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, fragment)
-        transaction.commit()
+    private fun addFragment(mCurrentLoadedFragment: Fragment, addToStack: Boolean, args: Bundle) {
+        val ft = supportFragmentManager.beginTransaction()
+        mCurrentLoadedFragment.arguments = args
+        ft.replace(R.id.fragment_container, mCurrentLoadedFragment, mCurrentLoadedFragment.javaClass.simpleName)
+        if (addToStack) {
+            ft.addToBackStack(mCurrentLoadedFragment.javaClass.simpleName)
+        }
+        ft.commit()
     }
 
-    override fun onClick(itnav: View?) {
+    override fun onClick(itnav: View?)
+
+    {
         when(itnav!!.id){
 
-            R.id.rl_home ->{
+            R.id.rl_logout ->showLogoutDialog()
 
-                bottomNavigationView.selectedItemId = R.id.Bot_home
-
+            R.id.banner_add_Btn ->  {
+                onAddClicked()
+                mBinding.bottomNavigation.selectedItemId = R.id.Bot_profile
             }
 
-            R.id.rl_order ->{
-
-            }
-            R.id.rl_myCart ->{
-
-            }
-            R.id.rl_profile ->{
-
-                bottomNavigationView.selectedItemId = R.id.Bot_profile
+            R.id.banner_get_Btn -> {
+                onGetAllClicked()
+                mBinding.bottomNavigation.selectedItemId = R.id.Bot_profile
             }
 
-            R.id.rl_logout ->{
-                val builder = AlertDialog.Builder(this)
-                    .setTitle("Logout")
-                    .setMessage("Are you sure want to logout")
-                    .setPositiveButton("yes", DialogInterface.OnClickListener { dialog, which ->
-
-                        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-                        val editor = sharedPreferences.edit()
-                        editor.putBoolean("isLoggedIn", false)
-                        editor.apply()
-
-                        finish()
-                    })
-                    .setNegativeButton("No") { dialog, which ->
-                        Toast.makeText(this, "Not Logout", Toast.LENGTH_SHORT).show()
-                    }
-                val alertDialog = builder.create()
-
-                alertDialog.show()
-            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
+    }
+    private fun showLogoutDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure want to logout?")
+            .setPositiveButton("Yes") { _, _ ->
+                getSharedPreferences("MyPrefs", MODE_PRIVATE).edit().apply {
+                    putBoolean("isLoggedIn", false)
+                    apply()
+                }
+                finish()
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
+
+    override fun onAddClicked() {
+        val fragment = ProfileFragment()
+        val args = Bundle().apply { putBoolean("showInsertUI", true) }
+        addFragment(fragment, true, args)
+    }
+
+    override fun onGetAllClicked() {
+        val fragment = ProfileFragment()
+        val args = Bundle().apply { putBoolean("showInsertUI", false) }
+        addFragment(fragment, true, args)
     }
 }

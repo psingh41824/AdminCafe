@@ -68,105 +68,128 @@
             android:background="@color/grey"/>
 
         <RelativeLayout
-            android:id="@+id/rl_home"
+            android:id="@+id/rl_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_below="@id/view_line">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_home"
+                android:id="@+id/txt_banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
                 android:padding="15dp"
-                android:text="Dashboard"
+                android:text="Banner"
                 android:textColor="@color/light_black"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/banner_arrowDown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/txt_home"
+                android:layout_alignEnd="@+id/txt_banner"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/arrow_down" />
 
-            <RelativeLayout
-                android:id="@+id/rl_home_add"
-                android:layout_width="match_parent"
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl1_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_banner"
+            android:layout_margin="10dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/banner_add_Btn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_home">
+                android:text="Add"
+                android:textSize="12sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/bg_spinner"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="All"/>
-
-            </RelativeLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/banner_get_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_toEndOf="@id/banner_add_Btn"
+                android:text="All"
+                android:textSize="12sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/bg_spinner"/>
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_order"
+            android:id="@+id/rl_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/rl_home">
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/rl1_banner">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_order"
+                android:id="@+id/txt_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
                 android:padding="15dp"
                 android:text="Category"
                 android:textColor="@color/light_black"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="20dp"
-                android:layout_height="24dp"
-                android:layout_alignEnd="@+id/txt_order"
-                android:layout_marginTop="10dp"
+                android:id="@+id/category_arrowDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txt_category"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/arrow_down" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_myCart"
+            android:id="@+id/rl1_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/rl_order">
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:layout_below="@+id/rl_category">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_myCart"
-                android:layout_width="match_parent"
+                android:id="@+id/category_add_Btn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
-                android:padding="15dp"
-                android:text="slider"
-                android:textColor="@color/light_black"
-                android:textSize="14sp" />
+                android:text="Add"
+                android:textSize="12sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/bg_spinner"/>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="20dp"
-                android:layout_height="24dp"
-                android:layout_alignEnd="@+id/txt_myCart"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/right_arrow" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/category_get_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_toEndOf="@id/category_add_Btn"
+                android:text="All"
+                android:textSize="12sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/bg_spinner"/>
 
         </RelativeLayout>
 
@@ -174,55 +197,125 @@
             android:id="@+id/rl_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/rl_myCart">
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/rl1_category">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
                 android:padding="15dp"
                 android:text="Product"
                 android:textColor="@color/light_black"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="20dp"
-                android:layout_height="24dp"
+                android:id="@+id/product_arrowDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/txt_product"
-                android:layout_marginTop="10dp"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/arrow_down" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_profile"
+            android:id="@+id/rl1_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/rl_product">
+            android:layout_below="@+id/rl_product"
+            android:layout_margin="10dp"
+            android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_profile"
+                android:id="@+id/product_add_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_spinner"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="Add"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/product_get_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_toEndOf="@id/product_add_Btn"
+                android:background="@drawable/bg_spinner"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="All"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/rl1_product">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
                 android:padding="15dp"
-                android:text="Profile"
+                android:text="User"
                 android:textColor="@color/light_black"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="20dp"
-                android:layout_height="24dp"
-                android:layout_alignEnd="@+id/txt_profile"
-                android:layout_marginTop="10dp"
+                android:id="@+id/user_arrowDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/txt_user"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/arrow_down" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl1_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_user"
+            android:layout_margin="10dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_add_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_spinner"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="Add"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_get_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_toEndOf="@id/user_add_Btn"
+                android:background="@drawable/bg_spinner"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="All"
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
@@ -230,68 +323,29 @@
             android:id="@+id/rl_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/rl_profile">
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/rl1_user">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
                 android:padding="15dp"
                 android:text="Logout"
                 android:textColor="@color/light_black"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="20dp"
-                android:layout_height="24dp"
+                android:id="@+id/logout_arrowDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/txt_logout"
-                android:layout_marginTop="10dp"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:scaleType="centerInside"
                 android:src="@drawable/right_arrow" />
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/bg_linear_gradiant">
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/grey"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_appname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Developed by Star web India"
-                android:textColor="@color/red"
-                android:textSize="12sp"
-                android:paddingStart="15dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="3dp"
-                android:layout_below="@id/view"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_version"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="App Version 1.0"
-                android:textColor="@color/grey"
-                android:paddingStart="15dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="4dp"
-                android:textSize="12sp"
-                android:layout_below="@id/txt_appname"/>
-
-        </RelativeLayout>
 
     </RelativeLayout>
 

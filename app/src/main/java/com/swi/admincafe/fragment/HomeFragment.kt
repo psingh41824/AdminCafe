@@ -79,6 +79,7 @@ class HomeFragment : Fragment() {
                 // Handle case where no item is selected
             }
         }
+
         return mBinding.root
     }
 
