@@ -9,15 +9,15 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.swi.admincafe.databinding.ActivityMainBinding
 import com.swi.admincafe.databinding.NavigationLayoutBinding
+import com.swi.admincafe.fragment.CategoryFragment
 import com.swi.admincafe.fragment.HomeFragment
+import com.swi.admincafe.fragment.ProductFragment
 import com.swi.admincafe.fragment.ProfileFragment
-import com.swi.admincafe.iterface.BannerActionListener
 
-class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener{
 
     private  lateinit var mBinding: ActivityMainBinding
     private lateinit var toolbar: Toolbar
@@ -45,21 +45,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
         initBottom()
         initNavigation()
 
-
         addFragment(HomeFragment(), false, args)
 
     }
 
     private fun initNavigation() {
-        mBinding.navigationLayout.rlBanner.setOnClickListener(this)
-        mBinding.navigationLayout.rlCategory.setOnClickListener(this)
-        mBinding.navigationLayout.rlProduct.setOnClickListener(this)
-        mBinding.navigationLayout.rlUser.setOnClickListener(this)
-        mBinding.navigationLayout.rlLogout.setOnClickListener(this)
-        mBinding.navigationLayout.bannerAddBtn.setOnClickListener (this)
-        mBinding.navigationLayout.bannerGetBtn.setOnClickListener (this)
+        navigationLayout.rlBanner.setOnClickListener(this)
+        navigationLayout.rlCategory.setOnClickListener(this)
+        navigationLayout.rlProduct.setOnClickListener(this)
+        navigationLayout.rlUser.setOnClickListener(this)
+        navigationLayout.rlLogout.setOnClickListener(this)
 
-        mBinding.navigationLayout.bannerArrowDown.setOnClickListener {
+        navigationLayout.bannerArrowDown.setOnClickListener {
 
             if (mBinding.navigationLayout.rl1Banner.visibility == View.VISIBLE) {
 
@@ -71,7 +68,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
                 mBinding.navigationLayout.bannerArrowDown.setImageResource(R.drawable.upper_arrow)
             }
         }
-        mBinding.navigationLayout.categoryArrowDown.setOnClickListener {
+        navigationLayout.categoryArrowDown.setOnClickListener {
 
             if (mBinding.navigationLayout.rl1Category.visibility == View.VISIBLE) {
 
@@ -83,7 +80,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
                 mBinding.navigationLayout.categoryArrowDown.setImageResource(R.drawable.upper_arrow)
             }
         }
-        mBinding.navigationLayout.productArrowDown.setOnClickListener {
+        navigationLayout.productArrowDown.setOnClickListener {
 
             if (mBinding.navigationLayout.rl1Product.visibility == View.VISIBLE) {
 
@@ -95,7 +92,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
                 mBinding.navigationLayout.productArrowDown.setImageResource(R.drawable.upper_arrow)
             }
         }
-        mBinding.navigationLayout.userArrowDown.setOnClickListener {
+        navigationLayout.userArrowDown.setOnClickListener {
 
             if (mBinding.navigationLayout.rl1User.visibility == View.VISIBLE) {
 
@@ -108,6 +105,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
             }
         }
 
+        navigationLayout.bannerAddBtn.setOnClickListener (this)
+        navigationLayout.bannerGetBtn.setOnClickListener (this)
+        navigationLayout.categoryAddBtn.setOnClickListener (this)
+        navigationLayout.categoryGetBtn.setOnClickListener (this)
+        navigationLayout.productAddBtn.setOnClickListener (this)
+        navigationLayout.productGetBtn.setOnClickListener (this)
     }
 
     private fun initBottom() {
@@ -115,19 +118,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
 
             when (it.itemId) {
                 R.id.Bot_home -> {
-
-                    toolbar.title = "Home"
                     addFragment(HomeFragment(),true,args)
                     true
                 }
-
                 R.id.Bot_profile -> {
-
+                    addFragment(ProfileFragment(),false,args)
+                    true
+                }
+                R.id.Bot_category ->{
+                    addFragment(CategoryFragment(),true,args)
+                    true
+                }
+                R.id.Bot_Product ->{
                     addFragment(ProfileFragment(),true,args)
                     true
                 }
                 else -> {
                     false
+
                 }
             }
         }
@@ -164,13 +172,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
             R.id.rl_logout ->showLogoutDialog()
 
             R.id.banner_add_Btn ->  {
-                onAddClicked()
-                mBinding.bottomNavigation.selectedItemId = R.id.Bot_profile
+                val args = Bundle().apply { putBoolean("showInsertUI", true) }
+                navigateToFragment(HomeFragment(), R.id.Bot_home, true, args)
             }
 
             R.id.banner_get_Btn -> {
-                onGetAllClicked()
-                mBinding.bottomNavigation.selectedItemId = R.id.Bot_profile
+                val args = Bundle().apply { putBoolean("showInsertUI", false) }
+                navigateToFragment(HomeFragment(), R.id.Bot_home, true, args)
+            }
+            R.id.category_add_Btn ->{
+                val args = Bundle().apply { putBoolean("showCatInsertUI", true) }
+                navigateToFragment(CategoryFragment(), R.id.Bot_category, true, args)
+            }
+            R.id.category_get_Btn ->{
+                val args = Bundle().apply { putBoolean("showCatInsertUI", false) }
+                navigateToFragment(CategoryFragment(), R.id.Bot_category, true, args)
+            }
+            R.id.product_add_Btn ->{
+                val args = Bundle().apply { putBoolean("showProInsertUI", true) }
+                navigateToFragment(ProductFragment(), R.id.Bot_Product, true, args)
+            }
+            R.id.product_get_Btn ->{
+                val args = Bundle().apply { putBoolean("showProInsertUI", false) }
+                navigateToFragment(ProductFragment(), R.id.Bot_Product, true, args)
             }
 
         }
@@ -191,15 +215,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, BannerActionList
             .show()
     }
 
-    override fun onAddClicked() {
-        val fragment = ProfileFragment()
-        val args = Bundle().apply { putBoolean("showInsertUI", true) }
-        addFragment(fragment, true, args)
+    private fun navigateToFragment(fragment: Fragment, itemId: Int, addToStack: Boolean, args: Bundle) {
+        // Update the BottomNavigationView to reflect the current selection.
+        bottomNavigationView.selectedItemId = itemId
+
+        addFragment(fragment, addToStack, args)
     }
 
-    override fun onGetAllClicked() {
-        val fragment = ProfileFragment()
-        val args = Bundle().apply { putBoolean("showInsertUI", false) }
-        addFragment(fragment, true, args)
-    }
 }
