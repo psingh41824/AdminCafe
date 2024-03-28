@@ -78,9 +78,12 @@
                 android:id="@+id/txt_banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
+                android:padding="12dp"
                 android:text="Banner"
                 android:textColor="@color/light_black"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_banner"
+                android:drawablePadding="10dp"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -98,35 +101,27 @@
             android:id="@+id/rl1_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_banner"
-            android:layout_margin="10dp"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:layout_marginStart="35dp"
+            android:layout_below="@+id/rl_banner">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/banner_add_Btn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:background="@drawable/bg_spinner"/>
+                android:padding="5dp"
+                android:text="Add Banner"
+                android:textSize="13sp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/banner_get_Btn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_toEndOf="@id/banner_add_Btn"
-                android:text="All"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:background="@drawable/bg_spinner"/>
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="Banner List"
+                android:textSize="13sp"
+                android:layout_below="@+id/banner_add_Btn"/>
 
         </RelativeLayout>
 
@@ -141,9 +136,12 @@
                 android:id="@+id/txt_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="Category"
+                android:padding="12dp"
+                android:text="Categories"
                 android:textColor="@color/light_black"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_category"
+                android:drawablePadding="10dp"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -161,35 +159,27 @@
             android:id="@+id/rl1_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:visibility="gone"
-            android:layout_below="@+id/rl_category">
+            android:layout_below="@+id/rl_category"
+            android:layout_marginStart="35dp"
+            android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/category_add_Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:background="@drawable/bg_spinner"/>
+                android:padding="5dp"
+                android:text="Add Category"
+                android:textSize="13sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/category_get_Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_toEndOf="@id/category_add_Btn"
-                android:text="All"
-                android:textSize="12sp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:background="@drawable/bg_spinner"/>
+                android:layout_below="@+id/category_add_Btn"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="Category List"
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
@@ -204,9 +194,12 @@
                 android:id="@+id/txt_product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="Product"
+                android:padding="12dp"
+                android:text="Products"
                 android:textColor="@color/light_black"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_products"
+                android:drawablePadding="10dp"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -225,34 +218,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_product"
-            android:layout_margin="10dp"
+            android:layout_marginStart="35dp"
             android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/product_add_Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_spinner"
-                android:paddingStart="10dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="5dp"
-                android:text="Add"
-                android:textSize="12sp" />
+                android:padding="5dp"
+                android:text="Add Product"
+                android:textSize="13sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/product_get_Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_toEndOf="@id/product_add_Btn"
-                android:background="@drawable/bg_spinner"
-                android:paddingStart="10dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="5dp"
-                android:text="All"
-                android:textSize="12sp" />
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="Product List"
+                android:textSize="12sp"
+                android:layout_below="@id/product_add_Btn"/>
 
         </RelativeLayout>
 
@@ -267,9 +252,12 @@
                 android:id="@+id/txt_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
+                android:padding="12dp"
                 android:text="User"
                 android:textColor="@color/light_black"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_users"
+                android:drawablePadding="10dp"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -288,34 +276,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_user"
-            android:layout_margin="10dp"
+            android:layout_marginStart="35dp"
             android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/user_add_Btn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_spinner"
-                android:paddingStart="10dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="5dp"
-                android:text="Add"
-                android:textSize="12sp" />
+                android:padding="5dp"
+                android:text="Add Users"
+                android:textSize="13sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/user_get_Btn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_toEndOf="@id/user_add_Btn"
-                android:background="@drawable/bg_spinner"
-                android:paddingStart="10dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="5dp"
-                android:text="All"
-                android:textSize="12sp" />
+                android:layout_below="@id/user_add_Btn"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="User List"
+                android:textSize="13sp" />
 
         </RelativeLayout>
 
@@ -330,9 +310,12 @@
                 android:id="@+id/txt_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
+                android:padding="12dp"
                 android:text="Logout"
                 android:textColor="@color/light_black"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_logout"
+                android:drawablePadding="10dp"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatImageView

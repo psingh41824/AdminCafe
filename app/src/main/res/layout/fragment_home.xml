@@ -15,62 +15,120 @@
             <RelativeLayout
                 android:id="@+id/rl_addUi"
                 android:layout_width="match_parent"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_Slider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Add Slider"
-                    android:textSize="40sp"
+                    android:layout_margin="15dp"
+                    android:text="Slider ( Slider Image Size Must Be 1600x550 ) -->"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_Slider"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_img"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_insert_photo_24"
-                    android:layout_marginStart="20dp"
-                    android:layout_below="@id/txt_Slider"/>
+                    android:text="Image:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/txt_Slider"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_img"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:weightSum="2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_path"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.60"
+                        android:hint="No file chosen"
+                        android:textSize="14sp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                         />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_imagePicker"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.40"
+                        android:text="Choose File"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:background="@drawable/bg_choose_file"/>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_offer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Offer:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/ll_slider"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edt_offer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
+                    android:layout_below="@id/txt_offer"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/bg_edit_box"
-                    android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type Offer"
-                    android:padding="10dp"
-                    android:textColor="@color/dark_grey"
-                    android:layout_below="@id/img_Slider"/>
+                    android:hint="Enter Offer"
+                    android:textSize="14sp"
+                    android:padding="12dp"
+                    android:textColor="@color/dark_grey" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_offerDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Offer Date:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/edt_offer"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edt_offerDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_offerDate"
                     android:layout_margin="15dp"
                     android:background="@drawable/bg_edit_box"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type OfferDate"
-                    android:padding="10dp"
-                    android:textColor="@color/dark_grey"
-                    android:layout_below="@id/edt_offer"/>
+                    android:hint="Enter OfferDate"
+                    android:textSize="14sp"
+                    android:padding="12dp"
+                    android:textColor="@color/dark_grey" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnBannerUpload"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:text="Upload"
-                    android:layout_below="@+id/edt_offerDate"/>
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/edt_offerDate"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_button"
+                    android:text="submit"
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 

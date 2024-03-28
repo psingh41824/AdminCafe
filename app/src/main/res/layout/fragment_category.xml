@@ -16,7 +16,7 @@
                 android:id="@+id/rl_addCat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_Category"
@@ -27,37 +27,95 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="Add Category"
-                    android:textSize="40sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_Category"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_categoryName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_insert_photo_24"
-                    android:layout_marginStart="20dp"
-                    android:layout_below="@id/txt_Category"/>
+                    android:text="Category Name:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/txt_Category"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edtTxt_CategoryName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/img_Category"
+                    android:layout_below="@id/txt_categoryName"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:hint="Enter Category Name"
+                    android:padding="12dp"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_categoryImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Category Image:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/edtTxt_CategoryName"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_categoryImg"
                     android:layout_margin="15dp"
                     android:background="@drawable/bg_edit_box"
-                    android:drawablePadding="15dp"
-                    android:drawableTint="@color/grey"
-                    android:hint="Type Category Name"
-                    android:padding="10dp"
-                    android:textColor="@color/dark_grey" />
+                    android:weightSum="2">
 
-                <Button
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_path"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.60"
+                        android:hint="No file chosen"
+                        android:textSize="14sp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_imagePicker"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.40"
+                        android:text="Choose File"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:background="@drawable/bg_choose_file"/>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_imgCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Image must be 50x50 px"
+                    android:textColor="@color/red"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@id/ll_category"/>
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnCategoryUpload"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/edtTxt_CategoryName"
-                    android:layout_margin="10dp"
-                    android:text="Upload" />
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/txt_imgCondition"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_button"
+                    android:text="submit"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
 

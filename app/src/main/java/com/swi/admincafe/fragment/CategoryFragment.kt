@@ -3,11 +3,13 @@ package com.swi.admincafe.fragment
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -36,7 +38,9 @@ class CategoryFragment : Fragment() {
 
     private val contract = registerForActivityResult(ActivityResultContracts.GetContent()){
         imageUri = it!!
-        mBinding.imgCategory.setImageURI(it)
+        val originalImageName = getOriginalImageName(imageUri)
+        mBinding.edtPath.setText(originalImageName)
+
     }
 
     override fun onAttach(context: Context) {
@@ -71,8 +75,7 @@ class CategoryFragment : Fragment() {
         loginViewModel = ViewModelProvider(this, AuthViewModelFactory(requireActivity().application, appRepository)).get(
             LoginViewModel::class.java)
 
-
-        mBinding.imgCategory.setOnClickListener { contract.launch("image/*") }
+        mBinding.llCategory.setOnClickListener { contract.launch("image/*") }
         mBinding.btnCategoryUpload.setOnClickListener { insertCategory() }
     }
     private fun insertCategory() {
@@ -83,17 +86,32 @@ class CategoryFragment : Fragment() {
         val filesDir = mActivity.applicationContext.filesDir
         val file = File(filesDir,"image.png")
         val inputStream = mActivity.contentResolver.openInputStream(imageUri)
+
         val outputStream = FileOutputStream(file)
         inputStream!!.copyTo(outputStream)
         val requestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
-        val imagePart = MultipartBody.Part.createFormData("image", file.name, requestBody)
 
+        val imagePart = MultipartBody.Part.createFormData("image", file.name, requestBody)
         val name = mBinding.edtTxtCategoryName.text.toString()
         val namePart : RequestBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
-        Log.e("TAG", "insertCategory: ${namePart}" )
 
         loginViewModel.insertCategory(imagePart, namePart)
 
+    }
+
+    private fun getOriginalImageName(uri: Uri?): String {
+        if (uri == null) return "Unknown Image"
+
+        val projection = arrayOf(MediaStore.Images.Media.DISPLAY_NAME)
+        mActivity.contentResolver.query(uri, projection, null, null, null)?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val index = cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME)
+                if (index != -1) {
+                    return cursor.getString(index)
+                }
+            }
+        }
+        return "Unknown Image"
     }
 
 }

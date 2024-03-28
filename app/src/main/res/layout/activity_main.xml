@@ -36,7 +36,7 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/lavender_border"
                         android:padding="4dp"
-                        android:src="@drawable/baseline_menu_24" />
+                        android:src="@drawable/ic_menu" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -46,7 +46,8 @@
                         android:layout_marginStart="20dp"
                         android:textColor="@color/light_black"
                         android:textStyle="bold"
-                        android:text="Home" />
+                        android:text="Cafe "
+                        android:textSize="20sp"/>
 
                 </RelativeLayout>
 
@@ -56,21 +57,7 @@
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/bottom_navigation"
                 android:layout_below="@id/toolBar"/>
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/BottomNavigation"
-                android:elevation="0dp"
-                app:elevation="0dp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/white"
-                app:itemIconSize="20dp"
-                app:labelVisibilityMode="labeled"
-                app:menu="@menu/bottom_menu" />
 
         </RelativeLayout>
 

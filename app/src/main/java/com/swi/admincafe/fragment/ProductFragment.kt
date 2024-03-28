@@ -3,6 +3,7 @@ package com.swi.admincafe.fragment
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,7 +36,7 @@ import java.io.FileOutputStream
 class ProductFragment : Fragment() {
     private lateinit var mBinding : FragmentProductBinding
     private lateinit var mActivity : MainActivity
-    lateinit var loginViewModel: LoginViewModel
+    private lateinit var loginViewModel: LoginViewModel
     private lateinit var productUri : Uri
     private lateinit var spinner: Spinner
     private var selectedCategoryId = String()
@@ -44,7 +45,8 @@ class ProductFragment : Fragment() {
 
     private val contractProduct = registerForActivityResult(ActivityResultContracts.GetContent()){
         productUri = it!!
-        mBinding.imgProduct.setImageURI(it)
+        val originalImageName = getOriginalImageName(productUri)
+        mBinding.edtPath.setText(originalImageName)
     }
 
     override fun onAttach(context: Context) {
@@ -91,7 +93,7 @@ class ProductFragment : Fragment() {
         observe(loginViewModel.categoryLiveData, :: categoryResult )
         loginViewModel.categoryData()
 
-        mBinding.imgProduct.setOnClickListener { contractProduct.launch("image/*") }
+        mBinding.llProduct.setOnClickListener { contractProduct.launch("image/*") }
         mBinding.btnProductUpload.setOnClickListener { insertProduct() }
 
         spinner = mBinding.spProductCategoryId
@@ -110,7 +112,7 @@ class ProductFragment : Fragment() {
                     }else{
                         val categoryNames = categoryList.mapNotNull { it.name }
                         val adapter = ArrayAdapter(mActivity, android.R.layout.simple_spinner_item, categoryNames)
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item)
                         spinner.adapter = adapter
                         spinner.setSelection(0) // Select the first item by default
 
@@ -140,25 +142,41 @@ class ProductFragment : Fragment() {
         val categoryId : RequestBody = selectedCategoryId.toRequestBody("text/plain".toMediaTypeOrNull())
         Log.e("categoryId", "insertProduct: ${selectedCategoryId}" )
 
-        val name = mBinding.txtProductName.text.toString()
+        val name = mBinding.edtProductName.text.toString()
         val namePart : RequestBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
 
-        val description = mBinding.txtProductDescription.text.toString()
+        val description = mBinding.edtProductDescription.text.toString()
         val descriptionPart : RequestBody = description.toRequestBody("text/plain".toMediaTypeOrNull())
 
-        val rating = mBinding.txtProductRating.text.toString()
+        val rating = mBinding.edtProductRating.text.toString()
         val ratingPart : RequestBody = rating.toRequestBody("text/plain".toMediaTypeOrNull())
 
-        val numReviews = mBinding.txtProductReviews.text.toString()
+        val numReviews = mBinding.edtProductReviews.text.toString()
         val numReviewsPart : RequestBody = numReviews.toRequestBody("text/plain".toMediaTypeOrNull())
 
-        val price = mBinding.txtProductPrice.text.toString()
+        val price = mBinding.edtProductPrice.text.toString()
         val pricePart : RequestBody = price.toRequestBody("text/plain".toMediaTypeOrNull())
 
-        val size = mBinding.txtProductSize.text.toString()
+        val size = mBinding.edtProductSize.text.toString()
         val sizePart : RequestBody = size.toRequestBody("text/plain".toMediaTypeOrNull())
 
         loginViewModel.insertProduct(categoryId,descriptionPart,imagePart,namePart,numReviewsPart,pricePart,ratingPart,sizePart)
     }
+
+    private fun getOriginalImageName(uri: Uri?): String {
+        if (uri == null) return "Unknown Image"
+
+        val projection = arrayOf(MediaStore.Images.Media.DISPLAY_NAME)
+        mActivity.contentResolver.query(uri, projection, null, null, null)?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val index = cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME)
+                if (index != -1) {
+                    return cursor.getString(index)
+                }
+            }
+        }
+        return "Unknown Image"
+    }
+
 
 }

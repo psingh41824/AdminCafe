@@ -16,7 +16,7 @@
                 android:id="@+id/rl_addProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_Product"
@@ -27,26 +27,48 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="Add Product"
-                    android:textSize="40sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_productName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
+                    android:text="Product Name:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/txt_Product"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_productName"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/bg_edit_box"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type Product Name"
-                    android:padding="10dp"
-                    android:textColor="@color/dark_grey"
-                    android:layout_below="@id/txt_Product"/>
+                    android:hint="Enter Product Name"
+                    android:textSize="14sp"
+                    android:padding="12dp"
+                    android:textColor="@color/dark_grey" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_productDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Product Description:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/edt_productName"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_productDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
@@ -54,24 +76,68 @@
                     android:background="@drawable/bg_edit_box"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type Description "
-                    android:padding="10dp"
+                    android:hint="Enter Description "
+                    android:textSize="14sp"
+                    android:padding="12dp"
                     android:textColor="@color/dark_grey"
-                    android:layout_below="@id/txt_productName"/>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_Product"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_insert_photo_24"
-                    android:layout_marginStart="20dp"
                     android:layout_below="@id/txt_productDescription"/>
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_productImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product Image:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/edt_productDescription"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_productImg"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/bg_edit_box"
+                    android:weightSum="2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_path"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.60"
+                        android:hint="No file chosen"
+                        android:textSize="14sp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_imagePicker"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.40"
+                        android:text="Choose File"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:background="@drawable/bg_choose_file"/>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_productPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/img_Product"
+                    android:text="Product Price:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/ll_product"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_productPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_productPrice"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
@@ -79,23 +145,43 @@
                     android:background="@drawable/bg_edit_box"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type Price "
+                    android:hint="Enter Price"
                     android:inputType="number"
-                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:padding="12dp"
                     android:textColor="@color/dark_grey" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_productSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product Size:"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/edt_productPrice"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_productSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:background="@drawable/bg_edit_box"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type Size "
-                    android:padding="10dp"
+                    android:hint="Enter Size "
+                    android:textSize="14sp"
+                    android:padding="12dp"
                     android:textColor="@color/dark_grey"
-                    android:layout_below="@id/txt_productPrice"/>
+                    android:layout_below="@id/txt_productSize"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_selectCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Category "
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/edt_productSize"/>
 
                 <RelativeLayout
                     android:id="@+id/rl_spinner"
@@ -103,24 +189,35 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_spinner"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/txt_productSize">
+                    android:layout_margin="15dp"
+                    android:layout_below="@id/txt_selectCategory">
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/sp_productCategoryId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="28dp"
+                        android:layout_width="150dp"
+                        android:layout_height="38dp"
                         android:spinnerMode="dropdown"
                         android:textAllCaps="true"
                         android:textSize="12sp"
+                        android:gravity="center"
                         android:padding="0dp" />
 
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_productRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/rl_spinner"
+                    android:text="Product Rating :"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/rl_spinner"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_productRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_productRating"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
@@ -128,31 +225,47 @@
                     android:background="@drawable/bg_edit_box"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type Product Rating "
-                    android:padding="10dp"
+                    android:hint="Enter Product Rating "
+                    android:textSize="14sp"
+                    android:padding="12dp"
                     android:textColor="@color/dark_grey" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_productReviews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product Reviews"
+                    android:textSize="15sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_below="@+id/edt_productRating"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_productReviews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:background="@drawable/bg_edit_box"
                     android:drawablePadding="15dp"
                     android:drawableTint="@color/grey"
-                    android:hint="Type Product Reviews "
-                    android:padding="10dp"
+                    android:hint="Enter Product Reviews :"
+                    android:textSize="14sp"
+                    android:padding="12dp"
                     android:inputType="number"
                     android:textColor="@color/dark_grey"
-                    android:layout_below="@id/txt_productRating"/>
+                    android:layout_below="@id/txt_productReviews"/>
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnProductUpload"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txt_productReviews"
-                    android:layout_margin="10dp"
-                    android:text="Upload" />
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/edt_productReviews"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_button"
+                    android:text="submit"
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 
